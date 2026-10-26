@@ -96,11 +96,22 @@ def make_shuffled_indices(n_samples, seed):
     repro_seed = np.random.RandomState(seed)
     return repro_seed.permutation(order)
 
-# Step 11 - partition_indices (not yet solved)
-# TODO: implement
+# Step 11 - partition_indices
+def partition_indices(indices, train_ratio, val_ratio):
+    # TODO: Split a shuffled index array into train, validation, and test index arrays.
+    
+    n = len(indices)
+    n_train, n_val = int(n * train_ratio), int(n * val_ratio)
 
-# Step 12 - subset_xy (not yet solved)
-# TODO: implement
+    tr_idx, val_idx, te_idx = indices[0: n_train], indices[n_train: n_train + n_val], indices[n_train + n_val:]
+    return tr_idx, val_idx, te_idx
+
+# Step 12 - subset_xy
+def subset_xy(X, y, indices):
+    # TODO: Select the rows of X and y at the given indices.
+    
+    x_sub, y_sub = X[indices], y[indices]
+    return (x_sub, y_sub)
 
 # Step 13 - ols_fit (not yet solved)
 # TODO: implement
