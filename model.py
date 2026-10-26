@@ -24,8 +24,16 @@ def impute_nan_with_mean(X):
     col_mean = np.nan_to_num(np.nanmean(x, axis=0))
     return np.where(nan_mask, col_mean, x)
 
-# Step 2 - compute_iqr_bounds (not yet solved)
-# TODO: implement
+# Step 2 - compute_iqr_bounds
+def compute_iqr_bounds(X, k=1.5):
+    # TODO: Compute per-column lower/upper clip bounds using the IQR rule.
+    
+    x = np.array(X, copy=True)
+    q1, q3 = np.percentile(x, 25, axis=0), np.percentile(x, 75, axis=0)
+    iqr = q3 - q1
+
+    lower, upper = (q1 - k * iqr), (q3 + k * iqr)
+    return lower, upper
 
 # Step 3 - clip_columns (not yet solved)
 # TODO: implement
