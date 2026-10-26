@@ -123,11 +123,18 @@ def ols_fit(X, y):
     theta = np.linalg.solve(A, b)
     return theta
 
-# Step 14 - ols_predict (not yet solved)
-# TODO: implement
+# Step 14 - ols_predict
+def ols_predict(X, theta):
+    # TODO: Predict continuous targets with a fitted linear model.
+    
+    return np.dot(X,  theta)
 
-# Step 15 - mean_absolute_error (not yet solved)
-# TODO: implement
+# Step 15 - mean_absolute_error
+def mean_absolute_error(y_true, y_pred):
+    # TODO: return the mean absolute error between targets and predictions
+    
+    residual = np.abs(y_true - y_pred)
+    return float(np.mean(residual))
 
 # Step 16 - root_mean_squared_error (not yet solved)
 # TODO: implement
